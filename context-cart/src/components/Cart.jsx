@@ -8,6 +8,9 @@ const Cart = () => {
     function removeItem(id) {
         setCartItems(prev => prev.filter(item => item.id !== id))
     }
+    const total = cartItems.reduce((acc, val) => {
+        return acc + val.price
+    },0)
     return (
         <>
             <div className="p-6 max-w-4xl mx-auto">
@@ -52,8 +55,10 @@ const Cart = () => {
                         </div>
                     })
                 }
-
-
+                <div className="mt-6 flex justify-between items-center border-t pt-4">
+                    <h2 className="text-xl font-semibold">Total</h2>
+                    <span className="text-xl font-bold">${total.toFixed(2)}</span>
+                </div>
             </div >
         </>
     )
