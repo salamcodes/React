@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import { useTodo } from '../context'
 
-const TodoItem = () => {
+const TodoItem = ({ todo }) => {
     const [editing, setEditing] = useState(false)
+    const [todoMsg, setTodoMsg] = useState(todo.todo)
 
-    const { udpateTodo, deleteTodo, toggleComplete } = useTodo
+    const { udpateTodo, deleteTodo, toggleComplete } = useTodo()
+
+
+    function edit() {
+        udpateTodo(todo.id, { ...todo, todo: todoMsg })
+    }
+
+    
     return (
         <>
 
@@ -15,7 +23,7 @@ const TodoItem = () => {
             {/* Todo Input (Read Only / Editable) */}
             <input
                 type="text"
-                defaultValue="Sample Task"
+                value={todoMsg}
                 readOnly={!editing}
                 className={`flex-1 px-2 py-1 rounded-md border focus:outline-none ${editing ? "bg-white border-black" : "bg-transparent border-transparent"
                     }`}
@@ -24,7 +32,6 @@ const TodoItem = () => {
             {/* Edit / Save Button */}
             <button
                 className="px-3 py-1 border rounded-md text-sm"
-
             >
 
             </button>

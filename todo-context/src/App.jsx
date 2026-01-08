@@ -32,11 +32,17 @@ const App = () => {
   return (
     <TodoProvider value={{ todos, addTodo, updateTodo, toggleComplete, deleteTodo }}>
       <TodoForm />
-      <div className="flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto">
 
-        <TodoItem />
+      {
+        todos.length > 0 && todos.map((todo) => {
+          <div key={todo.id} className="flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto">
 
-      </div>
+            <TodoItem todo={todo} />
+
+          </div>
+        })
+      }
+
     </TodoProvider>
   )
 }
