@@ -12,7 +12,7 @@ const TodoItem = ({ todo }) => {
         udpateTodo(todo.id, { ...todo, todo: todoMsg })
     }
 
-    
+
     return (
         <>
 
