@@ -1,34 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
+import { TodoProvider } from './context'
 
-function App() {
-  const [count, setCount] = useState(0)
+import TodoForm from './components/TodoForm'
+import TodoItem from './components/TodoItem'
 
+const App = () => {
+  const [todos, setTodos] = useState([])
+
+  function addTodo(todo) {
+
+    setTodos((prev) => {
+      return [...prev, todo]
+    })
+    console.log(todo)
+  }
+
+
+  function updateTodo(id, todo) {
+    setTodos((prev) => prev.map((item) => item.id === id ? todo : item))
+
+  }
+  function deleteTodo(id) {
+
+    setTodos((prev) => prev.filter((item) => item.id !== id))
+  }
+  function toggleComplete(id) {
+
+  }
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <TodoProvider value={{ todos, addTodo, updateTodo, toggleComplete, deleteTodo }}>
+      <TodoForm />
+
+      <TodoItem />
+    </TodoProvider>
   )
 }
 
