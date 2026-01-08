@@ -26,12 +26,17 @@ const App = () => {
   }
   function toggleComplete(id) {
 
+    setTodos((prev) => prev.map(item => item.id === id ? { ...item, completed: !item.completed } : item))
+
   }
   return (
     <TodoProvider value={{ todos, addTodo, updateTodo, toggleComplete, deleteTodo }}>
       <TodoForm />
+      <div className="flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto">
 
-      <TodoItem />
+        <TodoItem />
+
+      </div>
     </TodoProvider>
   )
 }

@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useTodo } from '../context'
 
 const TodoForm = () => {
-    const [todo, setTodo] = useState("")
+    const [todoMsg, setTodoMsg] = useState("")
+    const [isEditing , setIsEditing] = useState(false)
     const { addTodo } = useTodo()
 
     function add(todo) {

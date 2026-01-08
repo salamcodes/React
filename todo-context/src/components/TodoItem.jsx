@@ -8,33 +8,32 @@ const TodoItem = () => {
     return (
         <>
 
-            <div className="flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto">
 
-                {/* Checkbox */}
-                <input type="checkbox" className="w-4 h-4" />
+            {/* Checkbox */}
+            <input type="checkbox" className="w-4 h-4" />
 
-                {/* Todo Input (Read Only / Editable) */}
-                <input
-                    type="text"
-                    defaultValue="Sample Task"
-                    readOnly={!editing}
-                    className={`flex-1 px-2 py-1 rounded-md border focus:outline-none ${editing ? "bg-white border-black" : "bg-transparent border-transparent"
-                        }`}
-                />
+            {/* Todo Input (Read Only / Editable) */}
+            <input
+                type="text"
+                defaultValue="Sample Task"
+                readOnly={!editing}
+                className={`flex-1 px-2 py-1 rounded-md border focus:outline-none ${editing ? "bg-white border-black" : "bg-transparent border-transparent"
+                    }`}
+            />
 
-                {/* Edit / Save Button */}
-                <button
-                    className="px-3 py-1 border rounded-md text-sm"
+            {/* Edit / Save Button */}
+            <button
+                className="px-3 py-1 border rounded-md text-sm"
 
-                >
+            >
 
-                </button>
+            </button>
 
-                {/* Delete Button */}
-                <button className="px-3 py-1 border rounded-md text-sm text-red-600">
-                    Delete
-                </button>
-            </div>
+            {/* Delete Button */}
+            <button className="px-3 py-1 border rounded-md text-sm text-red-600">
+                Delete
+            </button>
+
         </>
     )
 }
