@@ -32,7 +32,7 @@ const TodoForm = () => {
                         event.preventDefault()
                         add(todo)
                     }} type='submit'
-                        className="px-4 py-2 rounded-lg bg-black text-white hover:bg-black/90">
+                        className="px-4 py-2 rounded-lg bg-black text-white hover:bg-black/90 cursor-pointer">
                         Add
                     </button>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TodoProvider } from './context'
 
 import TodoForm from './components/TodoForm'
@@ -12,7 +12,7 @@ const App = () => {
     setTodos((prev) => {
       return [...prev, todo]
     })
-    console.log(todo)
+    // console.log(todo)
   }
 
 
@@ -29,6 +29,17 @@ const App = () => {
     setTodos((prev) => prev.map(item => item.id === id ? { ...item, completed: !item.completed } : item))
 
   }
+
+  useEffect(() => {
+    let todos = JSON.parse(localStorage.getItem("todos"))
+    if (todos && todos.length > 0) {
+      setTodos(todos)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
   return (
     <TodoProvider value={{ todos, addTodo, updateTodo, toggleComplete, deleteTodo }}>
       <TodoForm />

@@ -28,26 +28,26 @@ const TodoItem = ({ todo }) => {
         <>
 
 
-            <div className={`flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto ${todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"
+            <div className={`flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto ${todo.completed ? "bg-[#ccdbbe]" : "bg-[#f2eff4]"
                 }`}>
 
-                {/* Checkbox */}
+
                 <input
                     checked={todo.completed}
                     onChange={toggleCompleted}
-                    type="checkbox" className="w-4 h-4" />
+                    type="checkbox" className="w-4 h-4 cursor-pointer" />
 
-                {/* Todo Input (Read Only / Editable) */}
+
                 <input
                     type="text"
                     value={todoMsg}
                     onChange={(e) => setTodoMsg(e.target.value)}
                     readOnly={!editing}
-                    className={`flex-1 px-2 py-1 rounded-md border focus:outline-none ${editing ? "bg-white border-black" : "bg-transparent border-transparent"
+                    className={`flex-1 px-2 py-1 rounded-md border focus:outline-none ${editing ? "bg-white border-gray-600" : "bg-transparent border-transparent"
                         }`}
                 />
 
-                {/* Edit / Save Button */}
+
                 <button
                     onClick={() => {
                         if (!editing) {
@@ -56,15 +56,15 @@ const TodoItem = ({ todo }) => {
                         setEditing(prev => !prev);
                     }}
                     disabled={todo.completed}
-                    className="px-3 py-1 border rounded-md text-sm"
+                    className="px-3 py-1 border rounded-md text-sm cursor-pointer"
                 >
                     {editing ? "Save" : "Edit"}
                 </button>
 
-                {/* Delete Button */}
+
                 <button
                     onClick={deleteItem}
-                    className="px-3 py-1 border rounded-md text-sm text-red-600">
+                    className="px-3 py-1 border rounded-md text-sm text-red-600 cursor-pointer">
                     Delete
                 </button>
 
