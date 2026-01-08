@@ -31,13 +31,13 @@ const TodoItem = ({ todo }) => {
             <div className={`flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto ${todo.completed ? "bg-[#ccdbbe]" : "bg-[#f2eff4]"
                 }`}>
 
-
+                
                 <input
                     checked={todo.completed}
                     onChange={toggleCompleted}
                     type="checkbox" className="w-4 h-4 cursor-pointer" />
 
-
+                
                 <input
                     type="text"
                     value={todoMsg}
@@ -47,7 +47,7 @@ const TodoItem = ({ todo }) => {
                         }`}
                 />
 
-
+               
                 <button
                     onClick={() => {
                         if (!editing) {
@@ -61,7 +61,7 @@ const TodoItem = ({ todo }) => {
                     {editing ? "Save" : "Edit"}
                 </button>
 
-
+                
                 <button
                     onClick={deleteItem}
                     className="px-3 py-1 border rounded-md text-sm text-red-600 cursor-pointer">
