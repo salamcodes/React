@@ -5,42 +5,70 @@ const TodoItem = ({ todo }) => {
     const [editing, setEditing] = useState(false)
     const [todoMsg, setTodoMsg] = useState(todo.todo)
 
-    const { udpateTodo, deleteTodo, toggleComplete } = useTodo()
+    const { updateTodo, deleteTodo, toggleComplete } = useTodo()
 
 
     function edit() {
-        udpateTodo(todo.id, { ...todo, todo: todoMsg })
+        updateTodo(todo.id, { ...todo, todo: todoMsg })
+
+        setEditing(false)
     }
+
+    function deleteItem() {
+        deleteTodo(todo.id)
+    }
+
+    function toggleCompleted() {
+        toggleComplete(todo.id)
+    }
+
 
 
     return (
         <>
 
 
-            {/* Checkbox */}
-            <input type="checkbox" className="w-4 h-4" />
+            <div className={`flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto ${todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"
+                }`}>
 
-            {/* Todo Input (Read Only / Editable) */}
-            <input
-                type="text"
-                value={todoMsg}
-                readOnly={!editing}
-                className={`flex-1 px-2 py-1 rounded-md border focus:outline-none ${editing ? "bg-white border-black" : "bg-transparent border-transparent"
-                    }`}
-            />
+                {/* Checkbox */}
+                <input
+                    checked={todo.completed}
+                    onChange={toggleCompleted}
+                    type="checkbox" className="w-4 h-4" />
 
-            {/* Edit / Save Button */}
-            <button
-                className="px-3 py-1 border rounded-md text-sm"
-            >
+                {/* Todo Input (Read Only / Editable) */}
+                <input
+                    type="text"
+                    value={todoMsg}
+                    onChange={(e) => setTodoMsg(e.target.value)}
+                    readOnly={!editing}
+                    className={`flex-1 px-2 py-1 rounded-md border focus:outline-none ${editing ? "bg-white border-black" : "bg-transparent border-transparent"
+                        }`}
+                />
 
-            </button>
+                {/* Edit / Save Button */}
+                <button
+                    onClick={() => {
+                        if (!editing) {
+                            edit();
+                        }
+                        setEditing(prev => !prev);
+                    }}
+                    disabled={todo.completed}
+                    className="px-3 py-1 border rounded-md text-sm"
+                >
+                    {editing ? "Save" : "Edit"}
+                </button>
 
-            {/* Delete Button */}
-            <button className="px-3 py-1 border rounded-md text-sm text-red-600">
-                Delete
-            </button>
+                {/* Delete Button */}
+                <button
+                    onClick={deleteItem}
+                    className="px-3 py-1 border rounded-md text-sm text-red-600">
+                    Delete
+                </button>
 
+            </div >
         </>
     )
 }

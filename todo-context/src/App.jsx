@@ -35,7 +35,7 @@ const App = () => {
 
       {
         todos.length > 0 && todos.map((todo) => {
-          <div key={todo.id} className="flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto">
+          return <div key={todo.id}>
 
             <TodoItem todo={todo} />
 
