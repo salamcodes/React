@@ -28,7 +28,7 @@ const TodoItem = ({ todo }) => {
         <>
 
 
-            <div className={`flex items-center gap-3 p-2 border rounded-lg w-full max-w-md mx-auto ${todo.completed ? "bg-[#ccdbbe]" : "bg-[#f2eff4]"
+            <div className={`flex items-center gap-3 p-2 border m-2 rounded-lg w-full max-w-md mx-auto ${todo.completed ? "bg-[#ccdbbe]" : "bg-[#f2eff4]"
                 }`}>
 
                 
