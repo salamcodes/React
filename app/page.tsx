@@ -16,10 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      
-
-
-
+    
         <div className="min-h-screen flex items-center justify-center bg-gray-100 flex-wrap gap-2">
           {
             users.map((item: User) => {
@@ -46,8 +43,6 @@ export default async function Home() {
             })
           }
         </div>
-
-     
 
     </>
   );
